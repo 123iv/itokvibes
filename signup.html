@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itok Vibes Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .phone {
+            width: 100%;
+        }
+
+        .phone img {
+            width: 100%;
+            height: auto;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .login-box h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .google-login-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            color: black;
+            border: 2px solid #db4437; /* Ring effect */
+            background-color: transparent; /* No background color */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .google-login-button img {
+            margin-right: 8px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .divider hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        .divider span {
+            margin: 0 10px;
+            color: #ccc;
+        }
+
+        .signup-box {
+            margin-top: 15px;
+        }
+
+        .signup-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Scaling content for small screens */
+        @media (max-width: 480px) {
+            .login-box h1 {
+                font-size: 1.2rem;
+            }
+
+            .input-group input {
+                font-size: 0.9rem;
+                padding: 6px;
+            }
+
+            .login-button, .google-login-button {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            .divider span {
+                font-size: 0.8rem;
+            }
+
+            .google-login-button img {
+                width: 16px;
+                height: 16px;
+            }
+
+            .main-container {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="phone-container">
+            <div class="phone">
+                <img src="phone.png" alt="Phone">
+            </div>
+        </div>
+        <div class="login-container">
+            <div class="login-box">
+                <h1>Itok Vibes</h1>
+                <form action="signup-success.html">
+                    <div class="input-group">
+                        <input type="text" placeholder="Phone number, username, or email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="login-button">Sign Up</button>
+                    <div class="divider">
+                        <hr> <span>OR</span> <hr>
+                    </div>
+                    <button type="button" class="google-login-button" onclick="window.location.href='signup-success.html'">
+                        <img src="google-logo.png" alt="Google Logo" style="width: 20px; height: 20px; margin-right: 8px;">
+                        Continue with Google
+                    </button>
+                </form>
+            </div>
+            <div class="signup-box">
+                <p>Already have an account? <a href="index.html">Log In</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

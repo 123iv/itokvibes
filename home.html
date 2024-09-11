@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itok Vibes - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        .top-bar {
+            width: 100%;
+            background-color: var(--sidebar-bg-color);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            justify-content: space-between;
+        }
+        .top-bar .menu-icon {
+            font-size: 24px;
+            color: var(--sidebar-text-color);
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .top-bar h2 {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0;
+            color: var(--sidebar-text-color);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .profile-icon {
+            font-size: 24px;
+            color: var(--sidebar-text-color);
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .sidebar-menu {
+            display: none;
+            background-color: var(--sidebar-bg-color);
+            position: fixed;
+            top: 50px;
+            left: 0;
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar-menu a {
+            color: var(--sidebar-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .sidebar-menu a:hover {
+            background-color: var(--sidebar-hover-bg-color);
+        }
+        .profile-section {
+            display: none;
+            background-color: var(--sidebar-bg-color);
+            padding: 10px;
+            position: absolute;
+            top: 50px; /* Adjusted top position */
+            right: 10px; /* Adjusted right position */
+            width: 200px;
+            z-index: 1000;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .profile-section p {
+            margin: 0;
+            padding: 10px;
+            color: var(--sidebar-text-color);
+            cursor: pointer;
+        }
+        .profile-section p:hover {
+            background-color: var(--sidebar-hover-bg-color);
+        }
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .search-bar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            background-color: var(--search-bar-bg-color);
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--search-bar-input-bg-color);
+            color: var(--search-bar-input-text-color);
+        }
+        .mic-button {
+            margin-left: 10px;
+            padding: 10px;
+            border: none;
+            background-color: var(--button-bg-color);
+            color: var(--button-text-color);
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .mic-button:hover {
+            background-color: var(--button-hover-bg-color);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .video-card {
+            background-color: var(--video-card-bg-color);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .video-card video {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .video-card h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+        }
+        .video-card p {
+            margin: 0;
+            color: var(--video-card-text-color);
+        }
+
+        /* Dark/Light Mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: white;
+                --sidebar-bg-color: #181818;
+                --sidebar-text-color: white;
+                --sidebar-hover-bg-color: #383838;
+                --search-bar-bg-color: #202020;
+                --search-bar-input-bg-color: #333;
+                --search-bar-input-text-color: white;
+                --button-bg-color: #333;
+                --button-text-color: white;
+                --button-hover-bg-color: #444;
+                --video-card-bg-color: #282828;
+                --video-card-text-color: #aaa;
+            }
+        }
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: white;
+                --text-color: black;
+                --sidebar-bg-color: #f1f1f1;
+                --sidebar-text-color: black;
+                --sidebar-hover-bg-color: #ddd;
+                --search-bar-bg-color: #eee;
+                --search-bar-input-bg-color: white;
+                --search-bar-input-text-color: black;
+                --button-bg-color: #ccc;
+                --button-text-color: black;
+                --button-hover-bg-color: #bbb;
+                --video-card-bg-color: #f9f9f9;
+                --video-card-text-color: #555;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+            <h2>Itok Vibes</h2>
+            <i class="fas fa-user-circle profile-icon" onclick="toggleProfile()"></i>
+        </div>
+
+        <div class="sidebar-menu" id="sidebarMenu">
+            <a href="#" onclick="closeSidebarAndProfile()">Home</a>
+            <a href="#" onclick="closeSidebarAndProfile()">Subscriptions</a>
+            <a href="#" onclick="closeSidebarAndProfile()">Shorts</a>
+            <a href="#" onclick="closeSidebarAndProfile()">History</a>
+            <a href="#" onclick="closeSidebarAndProfile()">Playlists</a>
+            <a href="#" onclick="closeSidebarAndProfile()">Liked Videos</a>
+        </div>
+
+        <div class="profile-section" id="profileSection">
+            <p onclick="closeSidebarAndProfile()">View Profile</p>
+            <p onclick="closeSidebarAndProfile()">Settings</p>
+            <p onclick="closeSidebarAndProfile()">Log Out</p>
+        </div>
+
+        <div class="main-content">
+            <div class="search-bar-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for accounts, videos...">
+                </div>
+                <button class="mic-button"><i class="fas fa-microphone"></i></button>
+            </div>
+
+            <div class="video-grid" id="videoGrid">
+                <!-- Video cards will be dynamically generated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebarMenu = document.getElementById('sidebarMenu');
+            const profileSection = document.getElementById('profileSection');
+            sidebarMenu.style.display = sidebarMenu.style.display === 'block' ? 'none' : 'block';
+            profileSection.style.display = 'none';
+        }
+
+        function toggleProfile() {
+            const profileSection = document.getElementById('profileSection');
+            const sidebarMenu = document.getElementById('sidebarMenu');
+            profileSection.style.display = profileSection.style.display === 'block' ? 'none' : 'block';
+            sidebarMenu.style.display = 'none';
+        }
+
+        function closeSidebarAndProfile() {
+            const sidebarMenu = document.getElementById('sidebarMenu');
+            const profileSection = document.getElementById('profileSection');
+            sidebarMenu.style.display = 'none';
+            profileSection.style.display = 'none';
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebarMenu = document.getElementById('sidebarMenu');
+            const profileSection = document.getElementById('profileSection');
+            const topBar = document.querySelector('.top-bar');
+            if (!sidebarMenu.contains(event.target) && !topBar.contains(event.target) && !profileSection.contains(event.target)) {
+                sidebarMenu.style.display = 'none';
+                profileSection.style.display = 'none';
+            }
+        });
+
+        const videoData = [
+            { title: 'Recommended Video 1', channel: 'Channel Name', src: 'recommend1.mp4' },
+            { title: 'Recommended Video 2', channel: 'Channel Name', src: 'recommend2.mp4' },
+            { title: 'Recommended Video 3', channel: 'Channel Name', src: 'recommend3.mp4' },
+            { title: 'Recommended Video 4', channel: 'Channel Name', src: 'recommend4.mp4' },
+            { title: 'Recommended Video 5', channel: 'Channel Name', src: 'recommend5.mp4' },
+            { title: 'Recommended Video 6', channel: 'Channel Name', src: 'recommend6.mp4' },
+            { title: 'Recommended Video 7', channel: 'Channel Name', src: 'recommend7.mp4' },
+            { title: 'Recommended Video 8', channel: 'Channel Name', src: 'recommend8.mp4' },
+            { title: 'Recommended Video 9', channel: 'Channel Name', src: 'recommend9.mp4' },
+            { title: 'Recommended Video 10', channel: 'Channel Name', src: 'recommend10.mp4' },
+            { title: 'Recommended Video 11', channel: 'Channel Name', src: 'recommend11.mp4' },
+            { title: 'Recommended Video 12', channel: 'Channel Name', src: 'recommend12.mp4' },
+        ];
+
+        const videoGrid = document.getElementById('videoGrid');
+        videoData.forEach(video => {
+            const videoCard = document.createElement('div');
+            videoCard.classList.add('video-card');
+            videoCard.innerHTML = `
+                <video controls>
+                    <source src="${video.src}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>${video.title}</h3>
+                <p>${video.channel}</p>
+            `;
+            videoGrid.appendChild(videoCard);
+        });
+
+        function adjustGridColumns() {
+            const videoGrid = document.getElementById('videoGrid');
+            const width = window.innerWidth;
+            if (width > 1200) {
+                videoGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+            } else if (width > 800) {
+                videoGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))';
+            } else {
+                videoGrid.style.gridTemplateColumns = '1fr';
+            }
+        }
+
+        window.addEventListener('resize', adjustGridColumns);
+        window.addEventListener('load', adjustGridColumns);
+    </script>
+</body>
+</html>
